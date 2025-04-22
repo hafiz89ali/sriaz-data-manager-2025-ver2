@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial Narrow";
+}
+
+body {
+  background-color: #f2f4f6;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 20px 20px;
+}
+
+input,
+select {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+input[type="text"]{
+  text-transform: uppercase;
+}
+
+input[type="email"]{
+  text-transform: lowercase;
+}
+
+a {
+  text-decoration: none;
+  <!-- font-weight: bold; -->
+  color: #16b8cf;
+}
+
+button {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #16b8cf;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #16b8cf;
+}
+
+<!-- CONTENT STYLING -->
+
+.main-content {
+  background-color: #fff;
+  border: 0.5px solid darkgray;
+  padding: 10px;
+  flex: 1;
+  overflow-y: auto;
+  height: calc(100vh - 108px);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.temporary-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+/* Spinner style */
+.spinner-bars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  gap: 5px;
+}
+
+.spinner-bars div {
+  width: 10px;
+  height: 40px;
+  background-color: #16b8cf;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.spinner-bars div:nth-child(1) {
+  animation-delay: -0.3s;
+}
+.spinner-bars div:nth-child(2) {
+  animation-delay: -0.15s;
+}
+.spinner-bars div:nth-child(3) {
+  animation-delay: 0s;
+}
+.spinner-bars div:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+@keyframes bounce {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+}

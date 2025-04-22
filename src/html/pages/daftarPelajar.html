@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>DAFTAR PELAJAR</h2>
+      <form id="studentForm">
+        <label for="name">Nama Murid:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="mykad">Mykad:</label>
+        <input
+          type="text"
+          id="mykad"
+          name="mykad"
+          required
+          pattern="[0-9]{12}"
+          title="Masukkan 12 digit nombor Mykad"
+        />
+
+        <label for="birth-date">Tarikh Lahir:</label>
+        <input type="date" id="birth-date" name="birthDate" />
+
+        <label for="birth-place">Tempat Lahir:</label>
+        <input type="text" id="birth-place" name="birthPlace" />
+
+        <label for="gender">Jantina:</label>
+        <select id="gender" name="gender">
+          <option value="male">LELAKI</option>
+          <option value="female">PEREMPUAN</option>
+        </select>
+
+        <label for="birth-cert">No. Sijil Lahir:</label>
+        <input type="text" id="birth-cert" name="birthCert" />
+
+        <label for="phone">No. Telefon:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          pattern="[0-9]{10}"
+          title="Masukkan 10 atau 11 digit nombor telefon"
+        />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <button type="button" id="submitButton">Daftar</button>
+      </form>
+      <p>Untuk pendaftaran pukal boleh ke</p>
+      <p />
+      <a
+        href="#"
+        onclick="event.preventDefault(); loadPage('daftarPukalPelajar')"
+        >Pendaftaran Pukal</a
+      >
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("submitButton")
+          .addEventListener("click", async function (event) {
+            event.preventDefault();
+            console.log("Butang daftar ditekan.");
+
+            const mykad = document.getElementById("mykad").value.trim();
+            console.log("Get MyKad: " + mykad); // Debugging
+            if (!mykad) {
+              showModal("Sila masukkan nombor Mykad.");
+              return;
+            }
+
+            // Check if Mykad already in the system
+            console.log("Menyemak Mykad: " + mykad);
+            google.script.run
+              .withSuccessHandler(function (data) {
+                console.log("Respon dari checkIC:", data);
+                if (data.exists) {
+                  showModal("Nombor Mykad ini sudah didaftarkan.");
+                } else {
+                  const name = document
+                    .getElementById("name")
+                    .value.trim()
+                    .toUpperCase();
+                  const birthDate = document
+                    .getElementById("birth-date")
+                    .value.trim();
+                  const birthPlace = document
+                    .getElementById("birth-place")
+                    .value.trim()
+                    .toUpperCase();
+                  const genderInput = document
+                    .getElementById("gender")
+                    .value.trim()
+                    .toLowerCase();
+                  const gender =
+                    genderInput === "male"
+                      ? "LELAKI"
+                      : genderInput === "female"
+                      ? "PEREMPUAN"
+                      : genderInput.toUpperCase();
+                  const birthCert = document
+                    .getElementById("birth-cert")
+                    .value.trim()
+                    .toUpperCase();
+                  const phone = document.getElementById("phone").value.trim();
+                  const email = document
+                    .getElementById("email")
+                    .value.trim()
+                    .toLowerCase();
+
+                  const studentData = {
+                    mykad,
+                    name,
+                    birthDate,
+                    birthPlace,
+                    gender,
+                    birthCert,
+                    phone,
+                    email,
+                  };
+
+                  // Send to Google Sheets
+                  console.log("Menghantar data murid:", studentData);
+                  google.script.run
+                    .withSuccessHandler(function (response) {
+                      console.log("Respon dari saveStudentData:", response);
+                      if (response.success) {
+                        showModal("Pendaftaran berjaya!");
+                        document.querySelector("form").reset();
+                      } else {
+                        showModal("Ralat berlaku, pendaftaran gagal.");
+                      }
+                    })
+                    .saveStudentData(studentData);
+                }
+              })
+              .checkIC(mykad);
+          });
+      });
+    </script>
+  </body>
+</html>
