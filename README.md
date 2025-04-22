@@ -4,6 +4,31 @@ A data management system for students and staff at Sekolah Rendah Islam Az-Zahra
 
 ---
 
+**⚙️ Technologies Used**
+
+- **Google Apps Script** – Backend for managing data and spreadsheets
+- **HTML/CSS/JS** – Responsive and modular user interface
+- **CLASP** – For local development and deployment to Apps Script
+
+---
+
+**🖋️ How to Use the Project**
+
+1. `clasp clone <scriptId>` – Clone project from Google Apps Script
+2. Edit code in `src/html/`
+3. `clasp push` – Deploy to Google Apps Script
+4. Open Apps Script editor and run `doGet()` to view the initial interface
+
+---
+
+**📌 Additional Notes**
+
+- The `index.html` file contains the main UI structure (including sidebar and wrapper)
+- All other pages are located in `pages/` and dynamically loaded via JavaScript
+- CSS is divided into two: `style.css` for general styles and `layout.css` for layout design
+
+---
+
 **📁 Project Structure**
 
 /SRIAZ Data Manager 2025 ver2
@@ -34,30 +59,5 @@ A data management system for students and staff at Sekolah Rendah Islam Az-Zahra
 │   │   │   ├── style.css            ← General styling
 │   │   │   ├── layout.css           ← Layout styling (grid/sidebar, etc.)
 ```
-
-**⚙️ Technologies Used**
-
-- **Google Apps Script** – Backend for managing data and spreadsheets
-- **HTML/CSS/JS** – Responsive and modular user interface
-- **CLASP** – For local development and deployment to Apps Script
-
----
-
-**🖋️ How to Use the Project**
-
-1. `clasp clone <scriptId>` – Clone project from Google Apps Script
-2. Edit code in `src/html/`
-3. `clasp push` – Deploy to Google Apps Script
-4. Open Apps Script editor and run `doGet()` to view the initial interface
-
----
-
-**📌 Additional Notes**
-
-- The `index.html` file contains the main UI structure (including sidebar and wrapper)
-- All other pages are located in `pages/` and dynamically loaded via JavaScript
-- CSS is divided into two: `style.css` for general styles and `layout.css` for layout design
-
----
 
 Prepared by: `github.com/hafiz89ali` 
