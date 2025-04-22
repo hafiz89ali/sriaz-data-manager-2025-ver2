@@ -52,12 +52,12 @@ A data management system for students and staff at Sekolah Rendah Islam Az-Zahra
 │   │   │   ├── senaraiStaf.html
 │   │   │   ├── daftarStaf.html
 │   │   │   ├── stafBerhenti.html
-│   │   ├── scripts/
-│   │   │   ├── main.js              ← Frontend JavaScript (event handler & loadPage)
-│   │   │   ├── daftarPelajar.gs     ← Apps Script for student registration
-│   │   ├── styles/
-│   │   │   ├── style.css            ← General styling
-│   │   │   ├── layout.css           ← Layout styling (grid/sidebar, etc.)
+│   ├── scripts/
+│   │   ├── main.js              ← Frontend JavaScript (event handler & loadPage)
+│   │   ├── daftarPelajar.gs     ← Apps Script for student registration
+│   ├── styles/
+│   │   ├── style.css            ← General styling
+│   │   ├── layout.css           ← Layout styling (grid/sidebar, etc.)
 ```
 
 Prepared by: `github.com/hafiz89ali` 
